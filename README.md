@@ -31,7 +31,7 @@
   + 放在`hubert`目录下
 + 预训练底模文件： [G_0.pth](https://huggingface.co/innnky/sovits_pretrained/resolve/main/sovits4.0-v2/G_0.pth) 与 [D_0.pth](https://huggingface.co/innnky/sovits_pretrained/resolve/main/sovits4.0-v2/D_0.pth)
   + 放在`logs/44k`目录下
-  + 预训练底模训练数据集包含云灏 即霜 辉宇·星AI 派蒙 绫地宁宁，覆盖男女生常见音域，可以认为是相对通用的底模
+  + 预训练底模训练数据集覆盖男女生常见音域，可以认为是相对通用的底模
 ```shell
 # 一键下载
 # contentvec
