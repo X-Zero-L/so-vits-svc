@@ -28,16 +28,14 @@ if __name__ == "__main__":
     parser.add_argument("--test_list", type=str, default="./filelists/test.txt", help="path to test list")
     parser.add_argument("--source_dir", type=str, default="./dataset/44k", help="path to source dir")
     args = parser.parse_args()
-    
+
     train = []
     val = []
     test = []
     idx = 0
     spk_dict = {}
-    spk_id = 0
-    for speaker in tqdm(os.listdir(args.source_dir)):
+    for spk_id, speaker in enumerate(tqdm(os.listdir(args.source_dir))):
         spk_dict[speaker] = spk_id
-        spk_id += 1
         wavs = ["/".join([args.source_dir, speaker, i]) for i in os.listdir(os.path.join(args.source_dir, speaker))]
         new_wavs = []
         for file in wavs:
@@ -58,19 +56,19 @@ if __name__ == "__main__":
     shuffle(train)
     shuffle(val)
     shuffle(test)
-            
+
     print("Writing", args.train_list)
     with open(args.train_list, "w") as f:
         for fname in tqdm(train):
             wavpath = fname
             f.write(wavpath + "\n")
-        
+
     print("Writing", args.val_list)
     with open(args.val_list, "w") as f:
         for fname in tqdm(val):
             wavpath = fname
             f.write(wavpath + "\n")
-            
+
     print("Writing", args.test_list)
     with open(args.test_list, "w") as f:
         for fname in tqdm(test):
