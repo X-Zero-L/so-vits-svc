@@ -6,7 +6,7 @@ import utils
 
 def get_hubert_model():
     vec_path = "hubert/checkpoint_best_legacy_500.pt"
-    print("load model(s) from {}".format(vec_path))
+    print(f"load model(s) from {vec_path}")
     models, saved_cfg, task = checkpoint_utils.load_model_ensemble_and_task(
         [vec_path],
         suffix="",
@@ -17,8 +17,6 @@ def get_hubert_model():
 
 
 def main(HubertExport, NetExport):
-    path = "SoVits4.0"
-
     '''if HubertExport:
         device = torch.device("cpu")
         vec_path = "hubert/checkpoint_best_legacy_500.pt"
@@ -48,6 +46,8 @@ def main(HubertExport, NetExport):
                           )'''
     if NetExport:
         device = torch.device("cpu")
+        path = "SoVits4.0"
+
         hps = utils.get_hparams_from_file(f"checkpoints/{path}/config.json")
         SVCVITS = SynthesizerTrn(
             hps.data.filter_length // 2 + 1,
